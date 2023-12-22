@@ -1,11 +1,13 @@
-all: words.txt
+all: words.txt histogram.tsv
 
 clean:
 	rm -f words.txt
 
-# input file goes in the command line
+# prereqs go after the target in the rule - in this case the input file.
+# commands have to exist before the commands for targets are run.
+# helpful website: https://makefiletutorial.com/
 words.txt: /usr/share/dict/words 
-	cp $< $@ #input and output symbols.
+	cp $< $@ # dependency symbols - first and second?
 
 histogram.tsv: histogram.r words.txt
 	Rscript $<
