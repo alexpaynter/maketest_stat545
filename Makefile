@@ -1,2 +1,11 @@
-words.txt: /usr/share/dict/words
-	cp /usr/share/dict/words words.txt
+all: words.txt
+
+clean:
+	rm -f words.txt
+
+# input file goes in the command line
+words.txt: /usr/share/dict/words 
+	cp $< $@ #input and output symbols.
+
+histogram.tsv: histogram.r words.txt
+	Rscript $<
