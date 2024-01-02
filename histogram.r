@@ -11,5 +11,5 @@ out_tab <- tibble(
 	janitor::tabyl(Length) %>%
 	select(Length, Freq = n)
 
-write.table(out_tab, file = "histogram.tsv")
+write.table(out_tab, file = "histogram.tsv", sep = "\t")
 

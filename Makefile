@@ -1,4 +1,5 @@
-all: histogram.tsv
+# It annoys me that they're just updating the "final" target here in all.
+all: histogram.png
 
 clean:
 	rm -f words.txt histogram.tsv
@@ -12,5 +13,6 @@ words.txt: /usr/share/dict/words
 histogram.tsv: histogram.r words.txt
 	Rscript $<
 	
+# here $@ refers to the output file (target)
 histogram.png: histogram.tsv
 	Rscript -e 'library(ggplot2); qplot(Length, Freq, data=read.delim("$<")); ggsave("$@")'
