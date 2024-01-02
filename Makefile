@@ -23,3 +23,12 @@ histogram.png: histogram.tsv
 # how could we refer to a second dependency if we wanted to?
 report.html: report.rmd histogram.tsv histogram.png
 	Rscript -e 'rmarkdown::render("$<")'
+
+# Optional extensions:
+
+# .PHONY tells make which things are not actual files to be created.
+# Reason stated is if you make a file with the same name, e.g. a folder 
+#   named clean, it can get confused.
+.PHONY: all clean
+# .DELETE_ON_ERROR files to delete if an error comes up while making them
+# .SECONDARY prevents intermediate files from being deleted (not totally clear on how)
