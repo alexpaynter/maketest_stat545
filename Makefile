@@ -2,7 +2,7 @@
 all: report.html
 
 clean:
-	rm -f words.txt histogram.tsv
+	rm -f words.txt histogram.tsv histogram.png report.md, report.html
 
 # prereqs go after the target in the rule - in this case the input file.
 # commands have to exist before the commands for targets are run.
