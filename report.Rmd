@@ -1,0 +1,21 @@
+---
+title: "Histogram report"
+author: "Alex Paynter"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, include = T)
+```
+
+## Introduction
+
+This is a report where we display a pre-made histogram:
+
+```{r display_hist}
+knitr::include_graphics(
+	'histogram.png'
+)
+```
+

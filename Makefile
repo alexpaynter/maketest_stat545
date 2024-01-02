@@ -1,5 +1,5 @@
 # It annoys me that they're just updating the "final" target here in all.
-all: histogram.png
+all: report.html
 
 clean:
 	rm -f words.txt histogram.tsv
@@ -18,3 +18,8 @@ histogram.tsv: histogram.r words.txt
 histogram.png: histogram.tsv
 	Rscript -e 'library(ggplot2); qplot(Length, Freq, data=read.delim("$<")); ggsave("$@")'
 	rm Rplots.pdf
+	
+# new rule for making the report - lists all the dependencies
+# how could we refer to a second dependency if we wanted to?
+report.html: report.rmd histogram.tsv histogram.png
+	Rscript -e 'rmarkdown::render("$<")'
